@@ -1,0 +1,41 @@
+<section class="add-clothing">
+  <h1>Add clothing item</h1>
+
+  <form [formGroup]="form" (ngSubmit)="submit()">
+    <label>
+      Name
+      <input formControlName="name" type="text" />
+    </label>
+
+    <label>
+      Description
+      <textarea formControlName="description" rows="3"></textarea>
+    </label>
+
+    <label>
+      Category
+      <select formControlName="category">
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+    </label>
+
+    <label>
+      Color
+      <input formControlName="color" type="text" />
+    </label>
+
+    <label>
+      Brand
+      <input formControlName="brand" type="text" />
+    </label>
+
+    <label>
+      Image URL
+      <input formControlName="imageUrl" type="url" />
+    </label>
+
+    <button type="submit" [disabled]="isSubmitting">Save</button>
+  </form>
+
+  <p *ngIf="errorMessage">{{ errorMessage }}</p>
+</section>

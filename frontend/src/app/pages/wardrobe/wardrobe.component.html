@@ -1,0 +1,23 @@
+<section class="wardrobe">
+  <header class="wardrobe-header">
+    <h1>My Wardrobe</h1>
+    <a routerLink="/add-clothing">Add clothing item</a>
+  </header>
+
+  <p *ngIf="isLoading">Loading wardrobe...</p>
+  <p *ngIf="errorMessage">{{ errorMessage }}</p>
+
+  <div class="grid" *ngIf="!isLoading && !errorMessage">
+    <article class="card" *ngFor="let item of clothes">
+      <img *ngIf="item.imageUrl" [src]="item.imageUrl" [alt]="item.name" />
+      <h2>{{ item.name }}</h2>
+      <p>{{ item.category }} · {{ item.color }}</p>
+      <p *ngIf="item.brand">Brand: {{ item.brand }}</p>
+      <p *ngIf="item.description">{{ item.description }}</p>
+    </article>
+  </div>
+
+  <p *ngIf="!isLoading && !errorMessage && clothes.length === 0">
+    No clothing items yet. Add your first item.
+  </p>
+</section>
