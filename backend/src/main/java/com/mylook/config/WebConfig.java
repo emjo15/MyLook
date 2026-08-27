@@ -5,6 +5,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
+/**
+ * Configures web-level cross-origin access for frontend-to-backend communication.
+ */
 @Configuration
 public class WebConfig implements WebMvcConfigurer {
 
@@ -14,6 +17,9 @@ public class WebConfig implements WebMvcConfigurer {
         this.allowedOrigins = allowedOrigins.split(",");
     }
 
+    /**
+     * Allows frontend clients to call backend API routes during local development.
+     */
     @Override
     public void addCorsMappings(CorsRegistry registry) {
         registry.addMapping("/api/**")

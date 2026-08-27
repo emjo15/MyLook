@@ -9,6 +9,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+/**
+ * Default implementation of clothing item business operations.
+ */
 @Service
 @Transactional
 public class ClothingItemServiceImpl implements ClothingItemService {
@@ -38,6 +41,7 @@ public class ClothingItemServiceImpl implements ClothingItemService {
     @Override
     public ClothingItemResponseDto create(ClothingItemRequestDto request) {
         ClothingItem entity = new ClothingItem();
+        // Reuse one mapping path so create and update stay consistent.
         applyRequest(entity, request);
         return toResponseDto(clothingItemRepository.save(entity));
     }

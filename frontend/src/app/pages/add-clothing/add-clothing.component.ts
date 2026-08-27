@@ -31,6 +31,7 @@ export class AddClothingComponent {
     private readonly wardrobeService: WardrobeService,
     private readonly router: Router
   ) {
+    // Keep the initial form definition close to constructor-injected dependencies.
     this.form = this.fb.nonNullable.group({
       name: ['', [Validators.required]],
       description: [''],
@@ -41,6 +42,7 @@ export class AddClothingComponent {
     });
   }
 
+  /** Validates and submits the form, then redirects back to the wardrobe page. */
   submit(): void {
     if (this.form.invalid) {
       this.form.markAllAsTouched();

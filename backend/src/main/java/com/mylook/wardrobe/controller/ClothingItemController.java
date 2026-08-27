@@ -19,6 +19,9 @@ import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 
+/**
+ * Exposes REST endpoints for managing wardrobe clothing items.
+ */
 @RestController
 @RequestMapping("/api/clothes")
 public class ClothingItemController {
@@ -29,11 +32,17 @@ public class ClothingItemController {
         this.clothingItemService = clothingItemService;
     }
 
+    /**
+     * Returns all saved clothing items.
+     */
     @GetMapping
     public List<ClothingItemResponseDto> getAll() {
         return clothingItemService.getAll();
     }
 
+    /**
+     * Returns one clothing item by id.
+     */
     @GetMapping("/{id}")
     public ClothingItemResponseDto getById(@PathVariable Long id) {
         try {
@@ -43,12 +52,18 @@ public class ClothingItemController {
         }
     }
 
+    /**
+     * Creates a new clothing item.
+     */
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public ClothingItemResponseDto create(@Valid @RequestBody ClothingItemRequestDto request) {
         return clothingItemService.create(request);
     }
 
+    /**
+     * Updates an existing clothing item.
+     */
     @PutMapping("/{id}")
     public ClothingItemResponseDto update(@PathVariable Long id, @Valid @RequestBody ClothingItemRequestDto request) {
         try {
@@ -58,6 +73,9 @@ public class ClothingItemController {
         }
     }
 
+    /**
+     * Deletes a clothing item by id.
+     */
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable Long id) {

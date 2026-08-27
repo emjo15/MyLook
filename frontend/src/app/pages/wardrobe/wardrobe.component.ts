@@ -17,6 +17,7 @@ export class WardrobeComponent implements OnInit {
 
   constructor(private readonly wardrobeService: WardrobeService) {}
 
+  /** Loads wardrobe data once when the page opens. */
   ngOnInit(): void {
     this.wardrobeService.getClothes().subscribe({
       next: (items) => {

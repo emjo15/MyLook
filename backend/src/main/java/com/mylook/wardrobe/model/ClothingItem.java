@@ -12,6 +12,9 @@ import jakarta.persistence.Table;
 
 import java.time.Instant;
 
+/**
+ * Wardrobe entity representing one user-owned clothing item.
+ */
 @Entity
 @Table(name = "clothing_items")
 public class ClothingItem {
@@ -40,6 +43,9 @@ public class ClothingItem {
     @Column(nullable = false, updatable = false)
     private Instant createdAt;
 
+    /**
+     * Initializes creation timestamp only for newly persisted entities.
+     */
     @PrePersist
     void prePersist() {
         if (createdAt == null) {
