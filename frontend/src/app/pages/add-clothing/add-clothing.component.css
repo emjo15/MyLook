@@ -1,0 +1,22 @@
+.add-clothing {
+  padding: 1rem;
+  max-width: 640px;
+}
+
+form {
+  display: grid;
+  gap: 0.75rem;
+}
+
+label {
+  display: grid;
+  gap: 0.25rem;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+  padding: 0.5rem;
+}
